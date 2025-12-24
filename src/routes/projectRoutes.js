@@ -7,6 +7,7 @@ import {
 } from "../controllers/projectController.js";
 
 import { authMiddleware } from "../middlewares/authMiddleware.js";
+import roleCheckMiddleware from "../middlewares/roleCheckMiddleware.js";
 
 const router = express.Router();
 
@@ -15,6 +16,6 @@ router.use(authMiddleware);
 router.post("/", createProject);
 router.get("/", getProjects);
 router.put("/:id", updateProject);
-router.delete("/:id", deleteProject);
+router.delete("/:id", roleCheckMiddleware("OWNER", "ADMIN"), deleteProject);
 
 export default router;
