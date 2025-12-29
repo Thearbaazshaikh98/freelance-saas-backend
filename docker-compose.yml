@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  freelance-saas-backend:
+    container_name: freelance-saas-backend
+    build: .
+    # image: freelance-saas-backend:1.0
+    # env_file:
+    #   - .env
+    ports:
+      - "4000:4000"
+    restart: always
+    environment:
+      - NODE_ENV=production

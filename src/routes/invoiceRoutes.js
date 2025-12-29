@@ -4,7 +4,7 @@ import {
   getInvoices,
   updateInvoice,
   sendInvoice,
-  createRazorpayOrder,
+  // createRazorpayOrder,
 } from "../controllers/invoiceController.js";
 
 import { authMiddleware } from "../middlewares/authMiddleware.js";
@@ -18,6 +18,6 @@ router.post("/", createInvoice);
 router.get("/", getInvoices);
 router.put("/:id", updateInvoice);
 router.put("/:id/send", roleCheckMiddleware("OWNER", "ADMIN"), sendInvoice);
-router.put("/:id/pay", createRazorpayOrder);
+// router.put("/:id/pay", createRazorpayOrder);
 
 export default router;
