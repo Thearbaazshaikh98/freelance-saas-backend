@@ -23,7 +23,7 @@ app.use(helmet());
 app.use(
   cors({
     origin: process.env.CLIENT_URL,
-    credentials: true
+    credentials: true,
   })
 );
 
@@ -33,7 +33,7 @@ app.use(morgan("dev"));
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 100
+  max: 100,
 });
 
 app.use("/api", limiter);
@@ -47,6 +47,11 @@ app.use("/api/tasks", taskRoutes);
 app.use("/api/invoices", invoiceRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/payments", paymentRoutes);
+
+/* -------------------- MAIN ROUTE -------------------- */
+app.get("/", (req, res) => {
+  res.status(200).send("Server is running up 🚀");
+});
 
 /* -------------------- HEALTH CHECK -------------------- */
 
