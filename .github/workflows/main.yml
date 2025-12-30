@@ -24,7 +24,7 @@ jobs:
         run: |
           ssh -i ~/.ssh/id_rsa \
             ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
-              cd ~/backend
+              cd backend
               git pull origin main
               docker compose down
               docker compose up -d --build
