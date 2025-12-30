@@ -28,8 +28,6 @@ jobs:
               git pull origin main
               docker compose down
               docker compose up -d --build
-            EOF
-
 # name: Deploy Backend to AWS EC2
 
 # on:
